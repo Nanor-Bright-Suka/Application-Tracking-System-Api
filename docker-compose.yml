@@ -8,7 +8,7 @@ services:
     depends_on:
       - postgres-db
     environment:
-      - ConnectionStrings__DefaultConnection=Host=localhost;Port=5432;Database=AtsDb;Username=postgres;Password=postgres
+      - ConnectionStrings__DefaultConnection=Host=postgres-db;Port=5432;Database=AtsDb;Username=postgres;Password=postgres
 
   postgres-db:
     image: postgres:16
