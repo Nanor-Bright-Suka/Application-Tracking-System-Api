@@ -45,7 +45,40 @@ public class AppDbContext : DbContext
             Role = RoleEnum.Recruiter
         }
     );
+
+   modelBuilder.Entity<Candidate>()
+        .HasIndex(c => c.Email)
+        .IsUnique();
+
+
+    modelBuilder.Entity<Application>()
+        .HasOne(a => a.Job)
+        .WithMany()
+        .HasForeignKey(a => a.JobId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+ 
+    modelBuilder.Entity<Application>()
+        .HasOne(a => a.Candidate)
+        .WithMany()
+        .HasForeignKey(a => a.CandidateId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+  
+    modelBuilder.Entity<Application>()
+        .HasIndex(a => new { a.JobId, a.CandidateId })
+        .IsUnique();
+
+    modelBuilder.Entity<Candidate>()
+    .HasIndex(c => c.Email)
+    .IsUnique();
+
+    modelBuilder.Entity<Application>()
+    .HasIndex(a => new { a.JobId, a.CandidateId })
+    .IsUnique();
     }
+
+  
 
 
 }
