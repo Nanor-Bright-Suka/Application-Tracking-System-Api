@@ -30,6 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+Console.WriteLine(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
+
 app.UseHttpsRedirection();
 
 //app.UseAuthorization();
