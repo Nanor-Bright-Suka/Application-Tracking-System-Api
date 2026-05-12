@@ -16,14 +16,13 @@ public class CustomWebApplicationFactory<TProgram>
 
         builder.ConfigureServices(services =>
         {
-            // remove real DB registration
+          
             var descriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
 
             if (descriptor != null)
                 services.Remove(descriptor);
 
-            // add in-memory DB
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseInMemoryDatabase("TestDb");

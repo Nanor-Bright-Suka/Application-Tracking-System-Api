@@ -441,3 +441,4 @@
 /home/nanor-bright-suka/Coding/c#-folder/Nssproject/ATS.Tests/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll
 /home/nanor-bright-suka/Coding/c#-folder/Nssproject/ATS.Tests/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll
 /home/nanor-bright-suka/Coding/c#-folder/Nssproject/ATS.Tests/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll
+/home/nanor-bright-suka/Coding/c#-folder/Nssproject/ATS.Tests/obj/Debug/net8.0/ATS.Tests.sourcelink.json

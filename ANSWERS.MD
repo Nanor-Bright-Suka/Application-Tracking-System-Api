@@ -1,4 +1,5 @@
 
+# Part 3 Submission(question 1)
 
 1. CREATE TABLE Applications (
     Id GUID PRIMARY KEY,
@@ -84,6 +85,7 @@ CREATE INDEX IX_Scores_TeamMemberId ON ApplicationScores(TeamMemberId);
 
 ## WHY
 Audit who scored what and which category, thus whether interview, culture-fit or assessment
+
 
 
 The query runs against the Applications table as the root entity and retrieves related data from Candidates, ApplicationScores, ApplicationNotes, and StageHistories, each linked by ApplicationId or navigation properties.
