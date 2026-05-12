@@ -1,0 +1,27 @@
+
+services:
+  server-api:
+    build: .
+    container_name: ats-container-api
+    ports:
+      - "5001:8080"
+    depends_on:
+      - postgres-db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+
+  postgres-db:
+    image: postgres:16
+    container_name: ats-container-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: AtsDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
