@@ -29,20 +29,20 @@ Each action is attributed to a team member to ensure accountability in the hirin
 
 From the root project directory 
 
-# bash
+
 - docker compose build
 - docker compose up -d
 
 
 This will:
 
-Build the API container
-Start the application
-Start the PostgreSQL database
+- Build the API container
+- Start the application
+- Start the PostgreSQL database
 
 ## Running Tests
 
-Navigate to the test project(ATS.Tests) and run:
+Navigate to the root folder and run:
 - dotnet test
 
 
@@ -58,7 +58,7 @@ Run the command below in the ATS folder.
 ## Seed Data
 Initial seed data for team members is configured in Data/AppDbContext using EF Core seeding.
 
-Future Improvements
+# Future Improvements
 
 ## Given more time, I would:
 

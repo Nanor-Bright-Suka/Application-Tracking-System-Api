@@ -87,6 +87,7 @@ CREATE INDEX IX_Scores_TeamMemberId ON ApplicationScores(TeamMemberId);
 Audit who scored what and which category, thus whether interview, culture-fit or assessment
 
 
+## HOW GET /api/applications/{id} LOOKS AGAINST MY SCHEMA
 
 The query runs against the Applications table as the root entity and retrieves related data from Candidates, ApplicationScores, ApplicationNotes, and StageHistories, each linked by ApplicationId or navigation properties.
 
