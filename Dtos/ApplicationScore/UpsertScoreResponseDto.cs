@@ -1,14 +1,16 @@
+
+
+
+
 using ATS.Enums;
 
-namespace ATS.Entities;
+namespace ATS.Dtos.ApplicationScore;
 
-
-public class ApplicationScore
+public class UpsertScoreResponseDto
 {
     public Guid Id { get; set; }
 
     public Guid ApplicationId { get; set; }
-    public Application Application { get; set; } = null!;
 
     public ApplicationScoreTypeEnum Type { get; set; }
 

@@ -15,6 +15,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<JobService>();
+builder.Services.AddScoped<ApplicationScoreService>();
 builder.Services.AddScoped<ApplicationService>();
 builder.Services.AddScoped<ApplicationNoteService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
