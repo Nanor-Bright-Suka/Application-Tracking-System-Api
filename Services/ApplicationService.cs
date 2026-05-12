@@ -168,5 +168,68 @@ public class ApplicationService
 
 
 
+    public async Task<ApplicationProfileResponseDto?> GetApplicationProfileService(Guid id)
+    {
+        var result = await _context.Applications
+            .Where(a => a.Id == id)
+            .Select(a => new ApplicationProfileResponseDto
+            {
+                Id = a.Id,
+                JobId = a.JobId,
+                CandidateName = a.Candidate.Name,
+                CandidateEmail = a.Candidate.Email,
+                Stage = a.Stage,
+
+                // SCORES
+                Scores = _context.ApplicationScores
+                    .Where(s => s.ApplicationId == a.Id)
+                    .Select(s => new ScoreDto
+                    {
+                        Type = s.Type,
+                        Score = s.Score,
+                        Comment = s.Comment,
+                        SetBy = _context.TeamMembers
+                            .Where(t => t.Id == s.TeamMemberId)
+                            .Select(t => t.Name)
+                            .FirstOrDefault() ?? "Unknown",
+                        CreatedAt = s.CreatedAt
+                    })
+                    .ToList(),
+
+                // NOTES
+                Notes = _context.ApplicationNotes
+                    .Where(n => n.ApplicationId == a.Id)
+                    .Select(n => new NoteDto
+                    {
+                        Type = n.Type,
+                        Description = n.Description,
+                        AuthorName = _context.TeamMembers
+                            .Where(t => t.Id == n.CreatedBy)
+                            .Select(t => t.Name)
+                            .FirstOrDefault() ?? "Unknown",
+                        CreatedAt = n.CreatedAt
+                    })
+                    .ToList(),
+
+                // STAGE HISTORY
+                StageHistory = _context.StageHistories
+                    .Where(h => h.ApplicationId == a.Id)
+                    .Select(h => new StageHistoryDto
+                    {
+                        From = h.FromStage,
+                        To = h.ToStage,
+                        ChangedBy = _context.TeamMembers
+                            .Where(t => t.Id == h.ChangedBy)
+                            .Select(t => t.Name)
+                            .FirstOrDefault() ?? "Unknown",
+                        Reason = h.Reason,
+                        ChangedAt = h.ChangedAt
+                    })
+                    .ToList()
+            })
+            .FirstOrDefaultAsync();
+
+        return result;
+    }
 
 }

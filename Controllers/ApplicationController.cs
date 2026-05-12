@@ -110,6 +110,21 @@ public class ApplicationController : ControllerBase
     }
 
 
+    [HttpGet("/api/applications/{id}")]
+    public async Task<IActionResult> GetApplication(Guid id)
+    {
+        var result = await _applicationService.GetApplicationProfileService(id);
+
+        if (result == null)
+        {
+            return Problem(
+                title: "Not Found",
+                detail: $"Application {id} not found",
+                statusCode: StatusCodes.Status404NotFound);
+        }
+
+        return Ok(result);
+    }
 
 
 
