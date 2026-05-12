@@ -192,7 +192,10 @@ public class ApplicationService
                             .Where(t => t.Id == s.TeamMemberId)
                             .Select(t => t.Name)
                             .FirstOrDefault() ?? "Unknown",
-                        CreatedAt = s.CreatedAt
+                        CreatedAt = s.CreatedAt,
+                        UpdatedAt = s.UpdatedAt,
+                        UpdatedBy = s.UpdatedBy 
+
                     })
                     .ToList(),
 

@@ -42,7 +42,8 @@ public class ApplicationScoreService
             existingScore.Score = dto.Score;
             existingScore.Comment = dto.Comment;
             existingScore.TeamMemberId = teamMemberId;
-            existingScore.CreatedAt = DateTime.UtcNow;
+             existingScore.UpdatedAt = DateTime.UtcNow;
+             existingScore.UpdatedBy = teamMemberId;
 
         }
         else
@@ -59,8 +60,8 @@ public class ApplicationScoreService
             };
 
             _context.ApplicationScores.Add(existingScore);
-            await _context.SaveChangesAsync();
         }
+          await _context.SaveChangesAsync();
         return new UpsertScoreResponseDto
         {
             Id = existingScore.Id,

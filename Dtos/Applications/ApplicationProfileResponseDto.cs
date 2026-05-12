@@ -29,6 +29,10 @@ public class ScoreDto
     public string Comment { get; set; } = string.Empty;
     public string SetBy { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public Guid? UpdatedBy { get; set; }
 }
 
 public class NoteDto
